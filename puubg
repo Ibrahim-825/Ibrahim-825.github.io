@@ -1,0 +1,137 @@
+<!--
+Filename: pubg-squad.html
+PUBG-themed squad intro cards with icons.
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PUBG Squad — Intro Cards</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    :root{
+      --bg: #0b0e14 url('vintage-grunge-blue-concrete-texture-studio-wall-background-with-vignette.jpg') no-repeat center center/cover;
+      --accent: linear-gradient(135deg,#ffb800 0%, #ff6a00 100%);
+      --muted: #cfd5df;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color:#f1f1f1;
+      padding:40px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      min-height:100vh;
+      backdrop-filter: blur(2px);
+    }
+
+    .squad-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+      gap:20px;
+      max-width:1000px;
+      width:100%;
+    }
+
+    .card{
+      background:rgba(10,12,18,0.85);
+      border:1px solid rgba(255,184,0,0.2);
+      padding:20px;
+      border-radius:16px;
+      text-align:center;
+      transition:transform .3s ease, box-shadow .3s ease;
+      position:relative;
+      overflow:hidden;
+    }
+    .card::before{
+      content:"";
+      position:absolute;
+      top:0;left:0;width:100%;height:4px;
+      background:var(--accent);
+    }
+    .card:hover{
+      transform:translateY(-8px);
+      box-shadow:0 16px 32px rgba(0,0,0,0.7);
+    }
+
+    .avatar {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: grid;
+  place-items: center;
+  overflow: hidden;  /* important for round crop */
+  box-shadow: 0 0 12px rgba(255,184,0,0.6);
+  border: 2px solid #fff;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+    h3{margin:0 0 8px;font-size:20px;font-family:'Orbitron',sans-serif;letter-spacing:1px}
+    p{margin:0;font-size:14px;color:var(--muted)}
+    .role{
+      margin-top:10px;
+      display:inline-block;
+      padding:6px 12px;
+      border-radius:8px;
+      background:rgba(255,184,0,0.15);
+      border:1px solid rgba(255,184,0,0.3);
+      font-size:13px;
+      font-weight:600;
+      color:#ffb800;
+    }
+
+    @media (max-width:600px){
+      body{padding:20px}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="squad-grid">
+    <div class="card">
+      <div class="avatar"><img src="WhatsApp Image 2025-10-01 at 14.55.26_23ef426d.jpg" alt=""></div>
+      <h3>* MR 13 *</h3>
+      <p>Level: 76 • K/D 8.35</p>
+      <div class="role">collection level: 64</div>
+    </div>
+
+    <div class="card">
+      <div class="avatar"><img src="WhatsApp Image 2025-10-01 at 14.55.25_6925dcaa.jpg" alt=""></div>
+      <h3>* MR 14 *</h3>
+      <p>Level: 60 • K/D 5.55</p>
+      <div class="role">collection level: 38</div>
+    </div>
+
+    <div class="card">
+      <div class="avatar"><img src="WhatsApp Image 2025-10-01 at 14.55.26_90d3b469.jpg" alt=""></div>
+      <h3>* MR 11 *</h3>
+      <p>Level: 51 • K/D 3.77</p>
+      <div class="role">collection level: 33</div>
+    </div>
+
+    <div class="card">
+      <div class="avatar"><img src="WhatsApp Image 2025-10-01 at 14.55.26_d49207c9.jpg" alt=""></div>
+      <h3>AP๛GÛRÎYÅ</h3>
+      <p>Level: 81 • K/D 2.10</p>
+      <div class="role">collection level: 62</div>
+    </div>
+  </div>
+</body>
+</html>
