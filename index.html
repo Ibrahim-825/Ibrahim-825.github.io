@@ -1,137 +1,221 @@
-<!--
-Filename: pubg-squad.html
-PUBG-themed squad intro cards with icons.
--->
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>PUBG Squad — Intro Cards</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bisma’s Secret Birthday Puzzle 💌</title>
+<style>
+  body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    color: #fff;
+    text-align: center;
+    overflow-x: hidden;
+  }
 
-  <style>
-    :root{
-      --bg: #0b0e14 url('vintage-grunge-blue-concrete-texture-studio-wall-background-with-vignette.jpg') no-repeat center center/cover;
-      --accent: linear-gradient(135deg,#ffb800 0%, #ff6a00 100%);
-      --muted: #cfd5df;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color:#f1f1f1;
-      padding:40px;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      min-height:100vh;
-      backdrop-filter: blur(2px);
-    }
+  .container {
+    padding: 25px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 
-    .squad-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
-      gap:20px;
-      max-width:1000px;
-      width:100%;
-    }
+  h1, h2 {
+    animation: fadeIn 2s ease;
+  }
 
-    .card{
-      background:rgba(10,12,18,0.85);
-      border:1px solid rgba(255,184,0,0.2);
-      padding:20px;
-      border-radius:16px;
-      text-align:center;
-      transition:transform .3s ease, box-shadow .3s ease;
-      position:relative;
-      overflow:hidden;
-    }
-    .card::before{
-      content:"";
-      position:absolute;
-      top:0;left:0;width:100%;height:4px;
-      background:var(--accent);
-    }
-    .card:hover{
-      transform:translateY(-8px);
-      box-shadow:0 16px 32px rgba(0,0,0,0.7);
-    }
+  button {
+    background: #fff;
+    color: #ff4081;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    margin: 10px;
+    font-size: 1em;
+    transition: 0.3s;
+  }
 
-    .avatar {
-  width: 90px;
-  height: 90px;
-  margin: 0 auto 14px;
-  border-radius: 50%;
-  background: var(--accent);
-  display: grid;
-  place-items: center;
-  overflow: hidden;  /* important for round crop */
-  box-shadow: 0 0 12px rgba(255,184,0,0.6);
-  border: 2px solid #fff;
-}
+  button:hover {
+    background: #ffe6ef;
+    transform: scale(1.05);
+  }
 
-.avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-}
+  #quiz, #final {
+    display: none;
+  }
 
-    h3{margin:0 0 8px;font-size:20px;font-family:'Orbitron',sans-serif;letter-spacing:1px}
-    p{margin:0;font-size:14px;color:var(--muted)}
-    .role{
-      margin-top:10px;
-      display:inline-block;
-      padding:6px 12px;
-      border-radius:8px;
-      background:rgba(255,184,0,0.15);
-      border:1px solid rgba(255,184,0,0.3);
-      font-size:13px;
-      font-weight:600;
-      color:#ffb800;
-    }
+  .option {
+    display: block;
+    margin: 10px auto;
+    background: #fff;
+    color: #ff4081;
+    border-radius: 25px;
+    width: 80%;
+    padding: 12px;
+    font-weight: bold;
+    border: 2px solid transparent;
+    transition: 0.3s;
+  }
 
-    @media (max-width:600px){
-      body{padding:20px}
-    }
-  </style>
+  .option:hover {
+    background: #ffe6ef;
+  }
+
+  .heart {
+    position: absolute;
+    bottom: 0;
+    width: 20px;
+    height: 20px;
+    background: pink;
+    transform: rotate(45deg);
+    animation: float 4s linear infinite;
+  }
+
+  .heart::before, .heart::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: pink;
+    border-radius: 50%;
+  }
+
+  .heart::before { top: -10px; left: 0; }
+  .heart::after { left: -10px; top: 0; }
+
+  @keyframes float {
+    0% { transform: translateY(0) rotate(45deg); opacity: 1; }
+    100% { transform: translateY(-700px) rotate(45deg); opacity: 0; }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .message {
+    font-size: 1.2em;
+    margin-top: 15px;
+  }
+
+  #final h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+  }
+
+  #final p {
+    font-size: 1.2em;
+  }
+</style>
 </head>
-
 <body>
-  <div class="squad-grid">
-    <div class="card">
-      <div class="avatar"><img src="WhatsApp Image 2025-10-01 at 14.55.26_23ef426d.jpg" alt=""></div>
-      <h3>* MR 13 *</h3>
-      <p>Level: 76 • K/D 8.35</p>
-      <div class="role">collection level: 64</div>
-    </div>
+<div class="container" id="start">
+  <h1>Welcome, Bisma 💌</h1>
+  <p>You’ve entered a secret world made only for you…</p>
+  <p>Each riddle brings you closer to your surprise ❤️</p>
+  <button onclick="startGame()">Let’s Begin 💫</button>
+</div>
 
-    <div class="card">
-      <div class="avatar"><img src="WhatsApp Image 2025-10-01 at 14.55.25_6925dcaa.jpg" alt=""></div>
-      <h3>* MR 14 *</h3>
-      <p>Level: 60 • K/D 5.55</p>
-      <div class="role">collection level: 38</div>
-    </div>
+<div class="container" id="quiz">
+  <h1 id="riddle-text"></h1>
+  <div id="options"></div>
+  <p id="feedback" class="message"></p>
+</div>
 
-    <div class="card">
-      <div class="avatar"><img src="WhatsApp Image 2025-10-01 at 14.55.26_90d3b469.jpg" alt=""></div>
-      <h3>* MR 11 *</h3>
-      <p>Level: 51 • K/D 3.77</p>
-      <div class="role">collection level: 33</div>
-    </div>
+<div class="container" id="final">
+  <h2>💖 Happy Birthday, My Love Bisma 💖</h2>
+  <p>From Muhammad — You’re my heart, my smile, my forever.  
+  You are the reason every day feels special. 🎂💞</p>
+  <audio id="bg-music" src="https://cdn.pixabay.com/audio/2022/03/15/audio_2a3a3a31f3.mp3" autoplay loop></audio>
+</div>
 
-    <div class="card">
-      <div class="avatar"><img src="WhatsApp Image 2025-10-01 at 14.55.26_d49207c9.jpg" alt=""></div>
-      <h3>AP๛GÛRÎYÅ</h3>
-      <p>Level: 81 • K/D 2.10</p>
-      <div class="role">collection level: 62</div>
-    </div>
-  </div>
+<script>
+const riddles = [
+  {
+    q: "I beat without pause, I feel without words. What am I?",
+    options: ["Heart", "Clock", "Drum", "Love"],
+    correct: "Heart"
+  },
+  {
+    q: "When you smile, the world shines brighter. What lights up my day?",
+    options: ["The Sun", "Your Smile", "Stars", "Candle"],
+    correct: "Your Smile"
+  },
+  {
+    q: "I have your face but I am not you. What am I?",
+    options: ["Photo", "Twin", "Mirror", "Shadow"],
+    correct: "Mirror"
+  },
+  {
+    q: "I can travel anywhere, even to your heart, without moving. What am I?",
+    options: ["Dream", "Music", "Message", "Love"],
+    correct: "Message"
+  },
+  {
+    q: "You open your eyes, and I’m the first thought that comes to your mind. Who am I?",
+    options: ["Coffee", "Muhammad", "Sunlight", "Phone"],
+    correct: "Muhammad"
+  }
+];
+
+let index = 0;
+
+function startGame() {
+  document.getElementById("start").style.display = "none";
+  document.getElementById("quiz").style.display = "block";
+  showRiddle();
+}
+
+function showRiddle() {
+  document.getElementById("riddle-text").textContent = riddles[index].q;
+  const optionsDiv = document.getElementById("options");
+  optionsDiv.innerHTML = "";
+
+  riddles[index].options.forEach(option => {
+    const btn = document.createElement("button");
+    btn.className = "option";
+    btn.textContent = option;
+    btn.onclick = () => checkAnswer(option);
+    optionsDiv.appendChild(btn);
+  });
+
+  document.getElementById("feedback").textContent = "";
+}
+
+function checkAnswer(answer) {
+  const feedback = document.getElementById("feedback");
+  if (answer === riddles[index].correct) {
+    feedback.textContent = "Correct 💕";
+    setTimeout(() => {
+      index++;
+      if (index < riddles.length) showRiddle();
+      else showFinal();
+    }, 1000);
+  } else {
+    feedback.textContent = "Oops! Try again 😘";
+  }
+}
+
+function showFinal() {
+  document.getElementById("quiz").style.display = "none";
+  document.getElementById("final").style.display = "block";
+  const music = document.getElementById("bg-music");
+  music.play();
+  createHearts();
+}
+
+function createHearts() {
+  for (let i = 0; i < 40; i++) {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.animationDuration = 3 + Math.random() * 3 + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 4000);
+  }
+}
+</script>
 </body>
 </html>
