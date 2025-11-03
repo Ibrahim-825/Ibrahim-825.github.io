@@ -8,7 +8,7 @@
   body {
     margin: 0;
     font-family: "Poppins", sans-serif;
-    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    background: linear-gradient(135deg, #ff5f9e, #ffb6c1, #ff69b4);
     color: #fff;
     text-align: center;
     overflow-x: hidden;
@@ -26,15 +26,20 @@
     animation: fadeIn 2s ease;
   }
 
+  p {
+    font-size: 1.1em;
+  }
+
   button {
-    background: #fff;
-    color: #ff4081;
+    background: white;
+    color: #ff3366;
     border: none;
     padding: 12px 25px;
     border-radius: 25px;
     margin: 10px;
     font-size: 1em;
     transition: 0.3s;
+    font-weight: bold;
   }
 
   button:hover {
@@ -48,11 +53,11 @@
 
   .option {
     display: block;
-    margin: 10px auto;
-    background: #fff;
-    color: #ff4081;
+    margin: 12px auto;
+    background: white;
+    color: #ff3366;
     border-radius: 25px;
-    width: 80%;
+    width: 85%;
     padding: 12px;
     font-weight: bold;
     border: 2px solid transparent;
@@ -60,7 +65,7 @@
   }
 
   .option:hover {
-    background: #ffe6ef;
+    background: #ffedf4;
   }
 
   .heart {
@@ -106,15 +111,16 @@
   }
 
   #final p {
-    font-size: 1.2em;
+    font-size: 1.3em;
+    line-height: 1.6em;
   }
 </style>
 </head>
 <body>
 <div class="container" id="start">
-  <h1>Welcome, Bisma 💌</h1>
-  <p>You’ve entered a secret world made only for you…</p>
-  <p>Each riddle brings you closer to your surprise ❤️</p>
+  <h1>🎁 Welcome, My Love Bisma 💌</h1>
+  <p>You’ve stepped into a secret world made only for you...</p>
+  <p>Answer the questions, and your surprise will bloom at the end 💖</p>
   <button onclick="startGame()">Let’s Begin 💫</button>
 </div>
 
@@ -126,45 +132,74 @@
 
 <div class="container" id="final">
   <h2>💖 Happy Birthday, My Love Bisma 💖</h2>
-  <p>From Muhammad — You’re my heart, my smile, my forever.  
-  You are the reason every day feels special. 🎂💞</p>
-  <audio id="bg-music" src="https://cdn.pixabay.com/audio/2022/03/15/audio_2a3a3a31f3.mp3" autoplay loop></audio>
+  <p>From Muhammad — You are my reason, my peace, and my forever.  
+  Every heartbeat whispers your name.  
+  You’re my favorite “what if” that became “always.” 💞</p>
 </div>
+
+<audio id="bg-music" src="Jeene Laga Hoon(KoshalWorld.Com).mp3" loop></audio>
 
 <script>
 const riddles = [
   {
-    q: "I beat without pause, I feel without words. What am I?",
-    options: ["Heart", "Clock", "Drum", "Love"],
-    correct: "Heart"
+    q: "1. What makes someone truly special to me?",
+    options: [
+      "A) Their smile that brightens my world 😊",
+      "B) Their kindness and heart 💫",
+      "C) The way they make me feel loved ❤️",
+      "D) All of the above 🌸"
+    ],
+    correct: "D) All of the above 🌸"
   },
   {
-    q: "When you smile, the world shines brighter. What lights up my day?",
-    options: ["The Sun", "Your Smile", "Stars", "Candle"],
-    correct: "Your Smile"
+    q: "2. If I could give one gift that lasts forever, it would be:",
+    options: [
+      "A) Endless laughter 😂",
+      "B) Countless hugs 🤗",
+      "C) A lifetime of love 💞",
+      "D) My heart, always 💖"
+    ],
+    correct: "D) My heart, always 💖"
   },
   {
-    q: "I have your face but I am not you. What am I?",
-    options: ["Photo", "Twin", "Mirror", "Shadow"],
-    correct: "Mirror"
+    q: "3. When did I realize love was real?",
+    options: [
+      "A) The first time our eyes met 😍",
+      "B) The first time we laughed together 😊",
+      "C) Every single day since 💫",
+      "D) All of the above 💕"
+    ],
+    correct: "D) All of the above 💕"
   },
   {
-    q: "I can travel anywhere, even to your heart, without moving. What am I?",
-    options: ["Dream", "Music", "Message", "Love"],
-    correct: "Message"
+    q: "4. What’s my favorite way to say “I love you”?",
+    options: [
+      "A) With a look 😍",
+      "B) With a hug 🤗",
+      "C) With every heartbeat ❤️",
+      "D) All of the above — and forever will be 💗"
+    ],
+    correct: "D) All of the above — and forever will be 💗"
   },
   {
-    q: "You open your eyes, and I’m the first thought that comes to your mind. Who am I?",
-    options: ["Coffee", "Muhammad", "Sunlight", "Phone"],
-    correct: "Muhammad"
+    q: "5. What’s the most beautiful thing in my life?",
+    options: [
+      "A) Sunsets 🌅",
+      "B) Music 🎶",
+      "C) Love that feels like home 🏡",
+      "D) The person I can’t stop thinking about 💖"
+    ],
+    correct: "D) The person I can’t stop thinking about 💖"
   }
 ];
 
 let index = 0;
+const music = document.getElementById("bg-music");
 
 function startGame() {
   document.getElementById("start").style.display = "none";
   document.getElementById("quiz").style.display = "block";
+  music.play(); // 🎵 Start background music when quiz starts
   showRiddle();
 }
 
@@ -187,30 +222,29 @@ function showRiddle() {
 function checkAnswer(answer) {
   const feedback = document.getElementById("feedback");
   if (answer === riddles[index].correct) {
-    feedback.textContent = "Correct 💕";
+    feedback.textContent = "Perfect answer, my love 💞";
     setTimeout(() => {
       index++;
       if (index < riddles.length) showRiddle();
       else showFinal();
     }, 1000);
   } else {
-    feedback.textContent = "Oops! Try again 😘";
+    feedback.textContent = "Almost right, try again 😘";
   }
 }
 
 function showFinal() {
   document.getElementById("quiz").style.display = "none";
   document.getElementById("final").style.display = "block";
-  const music = document.getElementById("bg-music");
-  music.play();
   createHearts();
 }
 
 function createHearts() {
-  for (let i = 0; i < 40; i++) {
+  for (let i = 0; i < 50; i++) {
     const heart = document.createElement("div");
     heart.className = "heart";
     heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.background = Math.random() > 0.5 ? "#ff3366" : "pink";
     heart.style.animationDuration = 3 + Math.random() * 3 + "s";
     document.body.appendChild(heart);
     setTimeout(() => heart.remove(), 4000);
