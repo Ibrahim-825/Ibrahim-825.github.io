@@ -11,24 +11,23 @@
     --light:#fff7fb;
     --accent:#ff3366;
   }
-  html,body{height:100%;margin:0;font-family:Inter, Poppins, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;}
+  html,body{height:100%;margin:0;font-family:Inter, Poppins, system-ui, -apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;}
   body{
-    background: linear-gradient(160deg, var(--pink1) 0%, #ff6b9a 40%, var(--pink2) 100%);
+    background:linear-gradient(160deg,var(--pink1)0%,#ff6b9a 40%,var(--pink2)100%);
     color:var(--light);
-    -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
   }
-  .center {
+  .center{
     min-height:100vh;
     display:flex;
     align-items:center;
     justify-content:center;
     padding:28px;
-    box-sizing:border-box;
     text-align:center;
   }
-  h1{font-size:1.6rem;margin:0 0 10px 0;line-height:1.1}
-  p.lead{margin:8px 0 18px 0;font-size:1rem;opacity:0.95}
+  h1{font-size:1.6rem;margin:0 0 10px 0;}
+  p.lead{margin:8px 0 18px 0;font-size:1rem;opacity:0.95;}
   button.primary{
     background:var(--light);
     color:var(--accent);
@@ -38,124 +37,148 @@
     font-weight:700;
     font-size:1rem;
     box-shadow:0 6px 18px rgba(0,0,0,0.12);
+    transition:transform .12s, box-shadow .12s;
   }
   button.primary:active{transform:translateY(1px)}
-  /* Quiz layout */
-  #quiz{display:none;min-height:100vh;padding:22px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:center;}
-  #riddle-text{font-size:1.2rem;margin-bottom:12px}
-  .options{width:100%;max-width:520px;margin:0 auto}
+
+  /* Quiz */
+  #quiz{display:none;min-height:100vh;padding:22px;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+  #riddle-text{font-size:1.2rem;margin-bottom:12px;}
+  .options{width:100%;max-width:520px;margin:0 auto;}
   .option{
-    display:block;
-    width:100%;
-    text-align:left;
-    background:var(--light);
-    color:var(--accent);
-    border-radius:16px;
-    padding:14px 16px;
-    margin:10px 0;
-    font-weight:700;
-    border:2px solid transparent;
-    box-sizing:border-box;
-    font-size:1rem;
+    display:block;width:100%;text-align:left;
+    background:var(--light);color:var(--accent);
+    border-radius:16px;padding:14px 16px;margin:10px 0;
+    font-weight:700;font-size:1rem;border:2px solid transparent;
   }
-  .option:active{transform:scale(0.998)}
-  .option:hover{background:#fff0f6}
+  .option:hover{background:#fff0f6;}
   .poetry{
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.08);
-    padding:18px 20px;
-    border-radius:14px;
-    margin-top:18px;
-    font-style:italic;
-    font-size:1.05rem;
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.08);
+    padding:18px 20px;border-radius:14px;
+    margin-top:18px;font-style:italic;font-size:1.05rem;
+    display:none;max-width:760px;
+  }
+  #next-btn{display:none;margin-top:16px;padding:10px 18px;border-radius:18px;border:none;background:var(--light);color:var(--accent);font-weight:700;}
+  .feedback{height:22px;margin-top:12px;opacity:0.95;}
+
+  /* Final page */
+  #final{
     display:none;
-    max-width:760px;
+    min-height:100vh;
+    padding:30px;
+    box-sizing:border-box;
+    position:relative;
+    overflow:hidden;
   }
-  #next-btn{display:none;margin-top:16px;padding:10px 18px;border-radius:18px;border:none;background:var(--light);color:var(--accent);font-weight:700}
-  .feedback{height:22px;margin-top:12px;opacity:0.95}
-  /* final */
-  #final{display:none;min-height:100vh;padding:30px;box-sizing:border-box;position:relative;overflow:hidden;}
-  .final-box{max-width:820px;margin:0 auto;background:linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));padding:22px;border-radius:16px;border:1px solid rgba(255,255,255,0.06)}
-  .final-title{font-size:1.6rem;margin-bottom:8px}
-  .scroll-wrap{height:46vh; overflow:hidden; margin-top:14px; position:relative}
-  .credits{
-    position:absolute;
-    bottom:-100%;
-    width:100%;
+  .final-box{
+    max-width:820px;
+    margin:0 auto;
+    background:rgba(255,255,255,0.05);
+    padding:24px 26px;
+    border-radius:20px;
+    box-shadow:0 0 20px rgba(255,255,255,0.15);
+    border:1px solid rgba(255,255,255,0.08);
     text-align:center;
-    line-height:1.8;
-    font-size:1.05rem;
-    white-space:pre-wrap;
-    color:var(--light);
-    padding:0 18px;
   }
-  /* animation helper */
-  @keyframes riseCredits {
-    0%{transform:translateY(100%)}
-    100%{transform:translateY(-135%)}
+  .final-title{
+    font-size:1.8rem;
+    margin-bottom:12px;
+    font-weight:700;
+    text-shadow:0 0 8px rgba(255,255,255,0.3);
+  }
+  .scroll-wrap{
+    height:55vh;
+    overflow-y:hidden; /* hidden at first */
+    position:relative;
+    margin-top:20px;
+    scrollbar-width:thin;
+    scrollbar-color:var(--accent) rgba(255,255,255,0.1);
+  }
+  .scroll-wrap::-webkit-scrollbar{width:6px;}
+  .scroll-wrap::-webkit-scrollbar-thumb{
+    background:var(--accent);
+    border-radius:10px;
   }
 
-  /* hearts/flowers */
-  .floating{
-    position:fixed;
-    left:0;
-    top:0;
-    pointer-events:none;
+  .credits{
     width:100%;
-    height:100%;
-    overflow:visible;
+    text-align:center;
+    line-height:1.9;
+    font-size:1.15rem;
+    color:#fff0f6;
+    padding:0 10px;
+    white-space:pre-wrap;
+    max-width:270px; /* ensures ~5 words per line */
+    margin:auto;
   }
-  .petal, .float-heart{
+
+  /* floating hearts & petals */
+  .floating{
+    position:fixed;left:0;top:0;width:100%;height:100%;
+    pointer-events:none;overflow:visible;
+  }
+  .float-heart,.petal{
     position:absolute;
     bottom:-40px;
     opacity:0.95;
-    animation: floatUp linear infinite;
+    animation:floatUp linear infinite;
     transform-origin:center;
   }
-  .float-heart{width:18px;height:18px;background:var(--accent);transform:rotate(45deg);border-radius:2px}
-  .float-heart:before, .float-heart:after{content:"";position:absolute;background:var(--accent);width:18px;height:18px;border-radius:50%}
-  .float-heart:before{top:-9px;left:0}
-  .float-heart:after{left:-9px;top:0}
-  .petal{width:22px;height:22px;border-radius:50%;background:radial-gradient(circle at 30% 30%, #ffd2e6, #ff7aa2);}
-  @keyframes floatUp {
-    0%{transform:translateY(0) rotate(0);opacity:1}
-    100%{transform:translateY(-120vh) rotate(360deg);opacity:0}
+  .float-heart{
+    width:18px;
+    height:18px;
+    background:var(--accent);
+    transform:rotate(45deg);
+    border-radius:2px;
+  }
+  .float-heart:before,.float-heart:after{
+    content:"";
+    position:absolute;
+    background:var(--accent);
+    width:18px;
+    height:18px;
+    border-radius:50%;
+  }
+  .float-heart:before{top:-9px;left:0;}
+  .float-heart:after{left:-9px;top:0;}
+  .petal{
+    width:22px;
+    height:22px;
+    border-radius:50%;
+    background:radial-gradient(circle at 30% 30%,#ffd2e6,#ff7aa2);
   }
 
-  /* small screens tuning */
-  @media (max-width:520px){
-    h1{font-size:1.35rem}
-    .poetry{font-size:1rem;padding:14px}
-    .option{padding:12px}
-    .credits{font-size:0.98rem}
+  @keyframes floatUp{
+    0%{transform:translateY(100vh);}
+    100%{transform:translateY(-200%);}
   }
 
-  /* subtle pulse on primary */
-  button.primary { transition: transform .12s, box-shadow .12s }
+  @media(max-width:520px){
+    h1{font-size:1.35rem;}
+    .poetry{font-size:1rem;padding:14px;}
+    .credits{font-size:1rem;}
+  }
 </style>
 </head>
 <body>
 
-<!-- START SCREEN -->
+<!-- START -->
 <section id="start" class="center">
   <div>
     <h1>🎁 For Bisma — A Little Birthday Journey</h1>
-    <p class="lead">Tap <strong>Let’s Begin</strong> and follow my clues. Each correct answer gives you a short paragraph — a little reward from my heart. 💌</p>
-    <div style="margin-top:16px">
-      <button class="primary" id="start-btn">Let’s Begin 💫</button>
-    </div>
-    <p style="margin-top:12px;font-size:0.9rem;opacity:0.95"></p>
+    <p class="lead">Tap <strong>Let’s Begin</strong> and follow my clues. Each right answer unlocks a little piece of my heart. 💌</p>
+    <button class="primary" id="start-btn">Let’s Begin 💫</button>
   </div>
 </section>
 
 <!-- QUIZ -->
-<section id="quiz" aria-hidden="true">
+<section id="quiz">
   <div style="width:100%;max-width:900px;margin:0 auto">
     <div id="riddle-text"></div>
     <div class="options" id="options"></div>
-
     <div class="poetry" id="poetry-text"></div>
-    <div style="display:flex;gap:12px;justify-content:center;align-items:center;margin-top:12px">
+    <div style="margin-top:12px">
       <button id="next-btn">Next ➜</button>
       <div class="feedback" id="feedback"></div>
     </div>
@@ -163,269 +186,192 @@
 </section>
 
 <!-- FINAL -->
-<section id="final" aria-hidden="true">
+<section id="final">
   <div class="final-box">
     <div class="final-title">🎂 Happy Birthday My Queen Bisma 🎂</div>
     <div style="font-size:1rem;opacity:0.95">
-      You unlocked the journey — now float through this little love letter I wrote for you.
+      You unlocked my heart — now scroll through this love letter, written only for you. 💖
     </div>
-
-    <div class="scroll-wrap" aria-hidden="true">
-      <div id="credits" class="credits"></div>
-    </div>
-
-    <div style="margin-top:18px;font-size:0.98rem;opacity:0.95">With all my love, <strong>Muhammad 💖</strong></div>
+    <div class="scroll-wrap" id="scroll-wrap"><div id="credits" class="credits"></div></div>
+    <div style="margin-top:18px;font-size:0.98rem;opacity:0.95">With endless love, <strong>Muhammad 💞</strong></div>
   </div>
 </section>
 
-<!-- floating container -->
-<div class="floating" id="floating-area" aria-hidden="true"></div>
+<!-- Floating hearts -->
+<div class="floating" id="floating-area"></div>
 
-<!-- audio (use your own file) -->
 <audio id="bg-music" src="Jeene Laga Hoon(KoshalWorld.Com).mp3" loop preload="auto"></audio>
 
 <script>
-/* ========== QUESTIONS (12) with short paragraph rewards ========== */
-const questions = [
-  {
-    q: "1) What makes someone truly special to me?",
-    options: ["Their smile that brightens my world", "Their kindness and heart", "The way they make me feel loved", "All of the above"],
-    correct: 3,
-    paragraph: "Your presence turns ordinary moments into memories I keep forever. In your smile I find my sunrise."
-  },
-  {
-    q: "2) If I could give one gift that lasts forever, it would be:",
-    options: ["Endless laughter", "Countless hugs", "A lifetime of love", "My heart, always"],
-    correct: 3,
-    paragraph: "A lifetime with you is the only gift I need — every tomorrow feels richer beside you."
-  },
-  {
-    q: "3) When did I realize love was real?",
-    options: ["The first time our eyes met", "The first time we laughed together", "Every single day since", "All of the above"],
-    correct: 3,
-    paragraph: "Love didn’t arrive in one moment — it grew in every shared laugh, every quiet morning, every look across the room."
-  },
-  {
-    q: "4) What’s my favorite way to say “I love you”?",
-    options: ["With a look", "With a hug", "With every heartbeat", "All of the above — and forever will be"],
-    correct: 3,
-    paragraph: "I tell you without words — in holds, in glances, in the steady beat that always returns to you."
-  },
-  {
-    q: "5) What’s the most beautiful thing in my life?",
-    options: ["Sunsets", "Music", "Love that feels like home", "The person I can’t stop thinking about"],
-    correct: 3,
-    paragraph: "All beauty pales beside the comfort of your hand in mine and the home your heart made inside me."
-  },
-  {
-    q: "6) What reminds me of you instantly?",
-    options: ["Rain", "Music", "Dreams", "Everything"],
-    correct: 3,
-    paragraph: "Your echo lives in every melody, every gentle rain — everything suddenly becomes you."
-  },
-  {
-    q: "7) What would I choose over everything in this world?",
-    options: ["Wealth", "Fame", "Peace", "You"],
-    correct: 3,
-    paragraph: "I would trade a thousand victories for one more moment with you — you are my chosen forever."
-  },
-  {
-    q: "8) What does every heartbeat whisper?",
-    options: ["Bisma", "Love", "Forever", "Stay"],
-    correct: 0,
-    paragraph: "Every beat speaks your name — quietly, constantly, like a prayer I never stop saying."
-  },
-  {
-    q: "9) If love were a journey, where would it lead?",
-    options: ["Dreamland", "Forever", "Our future", "Heaven"],
-    correct: 2,
-    paragraph: "I want to build our road together — step by step, hand in hand, into our future."
-  },
-  {
-    q: "10) What is the secret of my happiness?",
-    options: ["Success", "Family", "Bisma", "Luck"],
-    correct: 2,
-    paragraph: "Happiness began the day I found you; everything else only fills the spaces around that light."
-  },
-  {
-    q: "11) Which moment is my favorite memory with you?",
-    options: ["Our first laugh together", "Our first walk at dusk", "Those late-night talks", "All of them, forever"],
-    correct: 3,
-    paragraph: "Every memory with you is a treasure. They are threads in the same tapestry — beautiful and whole."
-  },
-  {
-    q: "12) What do I wish for you, always?",
-    options: ["Joy", "Health", "Peace", "All of the above"],
-    correct: 3,
-    paragraph: "I wish you everything that brings a gentle heart — joy, peace, and a life wrapped in love."
-  }
+const questions=[
+ {q:"1) What makes someone truly special to me?",options:["Their smile","Their kindness","The way they make me feel loved","All of the above"],correct:3,paragraph:"Your presence turns ordinary moments into memories I keep forever. In your smile I find my sunrise."},
+ {q:"2) If I could give one gift that lasts forever, it would be:",options:["Endless laughter","Countless hugs","A lifetime of love","My heart, always"],correct:3,paragraph:"A lifetime with you is the only gift I need — every tomorrow feels richer beside you."},
+ {q:"3) When did I realize love was real?",options:["The first time our eyes met","The first time we laughed together","Every single day since","All of the above"],correct:3,paragraph:"Love didn’t arrive in one moment — it grew in every shared laugh, every quiet morning, every look across the room."},
+ {q:"4) What’s my favorite way to say “I love you”?",options:["With a look","With a hug","With every heartbeat","All of the above — and forever will be"],correct:3,paragraph:"I tell you without words — in holds, in glances, in the steady beat that always returns to you."},
+ {q:"5) What’s the most beautiful thing in my life?",options:["Sunsets","Music","Love that feels like home","The person I can’t stop thinking about"],correct:3,paragraph:"All beauty pales beside the comfort of your hand in mine and the home your heart made inside me."},
+ {q:"6) What reminds me of you instantly?",options:["Rain","Music","Dreams","Everything"],correct:3,paragraph:"Your echo lives in every melody, every gentle rain — everything suddenly becomes you."},
+ {q:"7) What would I choose over everything in this world?",options:["Wealth","Fame","Peace","You"],correct:3,paragraph:"I would trade a thousand victories for one more moment with you — you are my chosen forever."},
+ {q:"8) What does every heartbeat whisper?",options:["Bisma","Love","Forever","Stay"],correct:0,paragraph:"Every beat speaks your name — quietly, constantly, like a prayer I never stop saying."},
+ {q:"9) If love were a journey, where would it lead?",options:["Dreamland","Forever","Our future","Heaven"],correct:2,paragraph:"I want to build our road together — step by step, hand in hand, into our future."},
+ {q:"10) What is the secret of my happiness?",options:["Success","Family","Bisma","Luck"],correct:2,paragraph:"Happiness began the day I found you; everything else only fills the spaces around that light."},
+ {q:"11) Which moment is my favorite memory with you?",options:["Our first laugh","Our first walk","Those late-night talks","All of them, forever"],correct:3,paragraph:"Every memory with you is a treasure — threads in the same tapestry of love."},
+ {q:"12) What do I wish for you, always?",options:["Joy","Health","Peace","All of the above"],correct:3,paragraph:"I wish you everything that brings peace — joy, calm, and a life wrapped in love."}
 ];
 
-/* ========== State ========== */
-let idx = 0;
-const startBtn = document.getElementById('start-btn');
-const startSection = document.getElementById('start');
-const quizSection = document.getElementById('quiz');
-const finalSection = document.getElementById('final');
-const riddleText = document.getElementById('riddle-text');
-const optionsWrap = document.getElementById('options');
-const poetryEl = document.getElementById('poetry-text');
-const nextBtn = document.getElementById('next-btn');
-const feedbackEl = document.getElementById('feedback');
-const music = document.getElementById('bg-music');
-const floatingArea = document.getElementById('floating-area');
-const credits = document.getElementById('credits');
+let idx=0;
+const startBtn=document.getElementById('start-btn');
+const startSection=document.getElementById('start');
+const quizSection=document.getElementById('quiz');
+const finalSection=document.getElementById('final');
+const riddleText=document.getElementById('riddle-text');
+const optionsWrap=document.getElementById('options');
+const poetryEl=document.getElementById('poetry-text');
+const nextBtn=document.getElementById('next-btn');
+const feedbackEl=document.getElementById('feedback');
+const music=document.getElementById('bg-music');
+const floatingArea=document.getElementById('floating-area');
+const credits=document.getElementById('credits');
 
-/* ========== START: user interaction triggers music reliably on mobile ========== */
-startBtn.addEventListener('click', () => {
-  // start music (user gesture)
-  music.volume = 0.55;
-  music.play().catch(()=>{ /* ignore if blocked */ });
-
-  // show quiz
-  startSection.style.display = 'none';
-  quizSection.style.display = 'block';
+startBtn.addEventListener('click',()=>{
+  music.volume=0.55;
+  music.play().catch(()=>{});
+  startSection.style.display='none';
+  quizSection.style.display='block';
   showQuestion();
 });
 
-/* ========== SHOW QUESTION ========== */
 function showQuestion(){
-  const q = questions[idx];
-  riddleText.textContent = q.q;
-  optionsWrap.innerHTML = '';
-  poetryEl.style.display = 'none';
-  poetryEl.textContent = '';
-  nextBtn.style.display = 'none';
-  feedbackEl.textContent = '';
-
-  q.options.forEach((opt, i) => {
-    const btn = document.createElement('button');
-    btn.className = 'option';
-    btn.textContent = `${String.fromCharCode(65+i)}) ${opt}`;
-    btn.addEventListener('click', () => handleAnswer(i));
+  const q=questions[idx];
+  riddleText.textContent=q.q;
+  optionsWrap.innerHTML='';
+  poetryEl.style.display='none';
+  nextBtn.style.display='none';
+  feedbackEl.textContent='';
+  q.options.forEach((opt,i)=>{
+    const btn=document.createElement('button');
+    btn.className='option';
+    btn.textContent=`${String.fromCharCode(65+i)}) ${opt}`;
+    btn.addEventListener('click',()=>handleAnswer(i));
     optionsWrap.appendChild(btn);
   });
-
-  // small scroll to top for mobile view
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
-/* ========== HANDLE ANSWER ========== */
 function handleAnswer(choice){
-  const q = questions[idx];
-  if(choice === q.correct){
-    // correct: clear options, show paragraph reward
-    optionsWrap.innerHTML = '';
-    riddleText.textContent = '';
-    poetryEl.textContent = q.paragraph;
-    poetryEl.style.display = 'block';
-    feedbackEl.textContent = 'Perfect answer, my love 💞';
-    // after 5s show next button
-    setTimeout(()=> {
-      nextBtn.style.display = 'inline-block';
-    }, 800);
-  } else {
-    feedbackEl.textContent = 'Almost right — try again, my heartbeat 😘';
-    // tiny pulse on wrong
-    setTimeout(()=> feedbackEl.textContent = '', 2200);
+  const q=questions[idx];
+  if(choice===q.correct){
+    optionsWrap.innerHTML='';
+    riddleText.textContent='';
+    poetryEl.textContent=q.paragraph;
+    poetryEl.style.display='block';
+    feedbackEl.textContent='Perfect answer, my love 💞';
+    setTimeout(()=>nextBtn.style.display='inline-block',800);
+  }else{
+    feedbackEl.textContent='Almost right — try again, my heartbeat 😘';
+    setTimeout(()=>feedbackEl.textContent='',2000);
   }
 }
-
-/* ========== NEXT QUESTION ========== */
-nextBtn.addEventListener('click', nextQuestion);
-function nextQuestion(){
+nextBtn.addEventListener('click',()=>{
   idx++;
-  if(idx < questions.length){
-    showQuestion();
-  } else {
-    finishJourney();
-  }
-}
-
-/* ========== FINISH: show final message with scrolling effect and abundant hearts/flowers ========== */
-function finishJourney(){
-  // hide quiz, show final
-  quizSection.style.display = 'none';
-  finalSection.style.display = 'block';
-
-  // populate credits text with your provided message (exact text inserted)
-  const finalMessage = `My love ❤️, today is more than just your birthday — it’s the day the world was blessed with someone truly special ✨.\n\nEvery moment with you feels like a celebration of love, laughter, and life itself 💞. You bring light wherever you go 🌟, and your presence fills every corner of my heart with warmth and peace 🕊️. I thank God every day for giving me you — my greatest gift and my forever reason to smile 😊.\n\nYou’ve made my life more beautiful than I ever dreamed it could be 🌹. Your kindness, strength, and endless love inspire me to be a better person every single day 💪❤️. When I look at you, I don’t just see my wife — I see my best friend, my partner, my heart’s home 🏡💖. You’ve stood beside me through every season 🍂❄️🌸☀️, and I promise to keep cherishing you through every moment that’s yet to come 💍.\n\nSo today, on your special day 🎉, I want you to know how deeply you are loved — not just today, but always 💫. You are my sunshine on dark days ☀️, my peace in chaos 🌈, and my forever in this world of temporary things 💞. Happy Birthday, my love! 🥰🎈 You are and always will be the best part of my life ❤️.\n\nWith all my love, Muhammad 💖`;
-
-  credits.textContent = finalMessage;
-
-  // start credits animation using JS (so it begins after content is set)
-  const creditsEl = credits;
-  // measure and animate
-  requestAnimationFrame(()=> {
-    const distance = creditsEl.getBoundingClientRect().height + (document.querySelector('.scroll-wrap').clientHeight || 400);
-    creditsEl.style.transition = `transform ${Math.max(12, distance/30)}s linear`;
-    creditsEl.style.transform = `translateY(-${distance}px)`;
-  });
-
-  // create lots of floating hearts & petals
-  spawnFloaters(120);
-  // keep spawning a few every second for lingering effect
-  const spawnInterval = setInterval(()=> spawnFloaters(6), 1400);
-
-  // stop spawning after some time (2 minutes) to avoid piling forever
-  setTimeout(()=> clearInterval(spawnInterval), 120000);
-}
-
-/* ========== SPAWN floating hearts/flowers ========== */
-function spawnFloaters(count=20){
-  const area = floatingArea;
-  const w = window.innerWidth;
-  for(let i=0;i<count;i++){
-    const isHeart = Math.random() > 0.45;
-    const el = document.createElement('div');
-    el.style.left = Math.random()* (w - 40) + 'px';
-    el.style.bottom = (-20 - Math.random()*120) + 'px';
-    el.style.opacity = 0.95;
-    el.style.zIndex = 9999;
-    const dur = 6 + Math.random()*5;
-    el.style.animationDuration = dur + 's';
-    if(isHeart){
-      el.className = 'float-heart';
-      // slight color variation
-      const color = Math.random()>0.5 ? '#ff1f62' : '#ff6b9a';
-      el.style.background = color;
-      el.style.borderRadius = '2px';
-      el.style.width = (12+Math.random()*18)+'px';
-      el.style.height = (12+Math.random()*18)+'px';
-      el.style.transform = 'rotate(45deg)';
-      el.style.opacity = 0.95;
-      el.style.setProperty('--h-color', color);
-      el.style.setProperty('left', el.style.left);
-      // create pseudo pieces for hearts using before/after via inner elements
-      const b1 = document.createElement('div');
-      const b2 = document.createElement('div');
-      Object.assign(b1.style,{position:'absolute',width:el.style.width,height:el.style.height,left:'0',top:'-9px',borderRadius:'50%',background:color});
-      Object.assign(b2.style,{position:'absolute',width:el.style.width,height:el.style.height,left:'-9px',top:'0',borderRadius:'50%',background:color});
-      el.appendChild(b1);
-      el.appendChild(b2);
-    } else {
-      el.className = 'petal';
-      el.style.width = (12+Math.random()*24)+'px';
-      el.style.height = el.style.width;
-      el.style.borderRadius = '50%';
-      el.style.opacity = 0.95;
-      el.style.background = `radial-gradient(circle at 30% 30%, #ffd2e6, ${Math.random()>0.5 ? '#ff7aa2' : '#ff4b8a'})`;
-    }
-    // random horizontal drift using CSS transform animation start offset
-    el.style.left = Math.random() * (w - 60) + 'px';
-    area.appendChild(el);
-    // remove after animation
-    setTimeout(()=> { try{ area.removeChild(el);}catch(e){} }, (dur*1000)+800);
-  }
-}
-
-/* small safe fallback if user hasn't interacted for audio later:
-   when clicking anywhere afterwards, ensure music is playing */
-document.addEventListener('click', function ensureMusic(){
-  if(music.paused){
-    music.play().catch(()=>{});
-  }
+  if(idx<questions.length){showQuestion();}
+  else{finishJourney();}
 });
+
+function finishJourney(){
+  quizSection.style.display='none';
+  finalSection.style.display='block';
+
+  const message=`My dearest Bisma ❤️
+
+Today isn’t just your birthday — 
+it’s the day the world became brighter 
+because of you. ✨
+
+You are my calm in chaos, 
+my laughter in silence, 
+and my warmth in cold days. 💕
+
+Every smile of yours 
+is a piece of heaven 
+I get to keep. 💗
+
+When I look at you, 
+I see my best friend, 
+my partner, my peace, 
+and my forever home. 🌸
+
+You’ve stood beside me 
+through every season — 
+and I promise to hold your hand 
+through every one that’s yet to come. ❄️
+
+Thank you for being the reason 
+I believe in love — 
+the kind that grows stronger 
+with every heartbeat. 💞
+
+Happy Birthday, my love! 🎂💖 
+May your days always shine 
+as beautifully as your soul.
+
+Forever yours,
+Muhammad 💫`;
+
+  credits.textContent=message;
+  spawnFloaters(60);
+  const spawnInt=setInterval(()=>spawnFloaters(5),2000);
+  setTimeout(()=>clearInterval(spawnInt),90000);
+  autoScrollThenManual(); // start smooth scroll
+}
+
+function autoScrollThenManual(){
+  const scrollWrap=document.getElementById("scroll-wrap");
+  scrollWrap.scrollTop=0;
+  scrollWrap.style.overflowY="hidden";
+  let scrollSpeed=0.6;
+  let autoScroll=setInterval(()=>{
+    scrollWrap.scrollTop+=scrollSpeed;
+    if(scrollWrap.scrollTop+scrollWrap.clientHeight>=scrollWrap.scrollHeight){
+      clearInterval(autoScroll);
+    }
+  },20);
+  setTimeout(()=>{
+    clearInterval(autoScroll);
+    scrollWrap.style.overflowY="auto";
+  },10000);
+}
+
+function spawnFloaters(count=20){
+  const area=floatingArea;
+  const w=window.innerWidth;
+  for(let i=0;i<count;i++){
+    const isHeart=Math.random()>0.45;
+    const el=document.createElement('div');
+    el.style.left=Math.random()*(w-40)+'px';
+    el.style.bottom=(-20-Math.random()*120)+'px';
+    const dur=6+Math.random()*5;
+    el.style.animationDuration=dur+'s';
+    if(isHeart){
+      el.className='float-heart';
+      const color=Math.random()>0.5?'#ff1f62':'#ff6b9a';
+      el.style.background=color;
+      const b1=document.createElement('div'),b2=document.createElement('div');
+      Object.assign(b1.style,{position:'absolute',width:'100%',height:'100%',left:'0',top:'-9px',borderRadius:'50%',background:color});
+      Object.assign(b2.style,{position:'absolute',width:'100%',height:'100%',left:'-9px',top:'0',borderRadius:'50%',background:color});
+      el.appendChild(b1);el.appendChild(b2);
+    }else{
+      el.className='petal';
+      el.style.width=(12+Math.random()*24)+'px';
+      el.style.height=el.style.width;
+      el.style.background=`radial-gradient(circle at 30% 30%,#ffd2e6,${Math.random()>0.5?'#ff7aa2':'#ff4b8a'})`;
+    }
+    area.appendChild(el);
+    setTimeout(()=>{try{area.removeChild(el);}catch(e){}},dur*1000+800);
+  }
+}
+
+document.addEventListener('click',()=>{if(music.paused)music.play().catch(()=>{});});
 </script>
 </body>
 </html>
+
